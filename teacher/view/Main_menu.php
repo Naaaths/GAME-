@@ -1,6 +1,8 @@
 <?php
        session_start();
        $user = $_SESSION['username'];
+      $id = $_GET['id'];
+      $_SESSION['userid'] = $id;
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,27 +31,29 @@
           ;?>
            <!----NAVIGATION BAR END-->
                 <div class="blocks container">
-                  <img src="../img/teacher.png">
                     <div class="row col-sm-8 ms-1">
                     <!-- Button trigger modal -->
-                    <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      Create Questions
+                    <div class="row col-sm-8 mt-4 ms-1">
+                   <!-- Button trigger modal -->
+                    <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Create Question
                       <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                     </button>
+
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
-                            <button type="button" class="btn-close btn-secondary" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 class="modal-title" id="staticBackdropLabel">Warning</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
-                            You can't Log out while making a questions
+                            You cannot log out when adding your question. Be sure to type each question and option, choose the correct answer and click save. Ready?
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <a href="Create.php" type="button" class="btn border border-warning bg-warning text-dark">Create Questions</a>
+                            <a href ="Create.php" type="button" class="btn btn-warning">Create Question</a>
                           </div>
                         </div>
                       </div>
@@ -61,7 +65,7 @@
                     </a>
                     </div>
                     <div class="row col-sm-8 mt-4 ms-1">
-                    <a href="ViewScore.php" type="button" class="button">View Score of Students
+                    <a href="Viewscore.php" type="button" class="button">View Score of Students
                       <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                     </a>
                     </div>

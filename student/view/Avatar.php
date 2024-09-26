@@ -1,5 +1,6 @@
 <?php
-  include 'codeconn.php';
+  session_start();
+  include 'conn.php';
   $player=$_SESSION['player'];
   if(isset($_POST['boy'])){
     $pic = "../img/Boy.png";
@@ -25,7 +26,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../asset/bootstrap-5.0.1-dist/css/bootstrap.min.css">
     <!---CREATE CSS-->
-    <link rel="stylesheet" href="../css/Avatar.css">
+    <link rel="stylesheet" href="../css/Avatar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../includes/common.css">
   </head>
   <body>
@@ -37,26 +38,30 @@
         <div class="Box container">
             <!----CONTENT START------->
           <div class="blocks container mt-3 p-0">
-            <div class="row d-flex justify-content-center">
-            <div class="col-sm-6">
+            <div class="row">
+            <div class="col-lg-6">
+            <div class="card">
               <div class="character"><br>
-                <img src="../img/ABoy.png">
+                <img src="../img/ABoy.png"class="card-img-top" alt="...">
                 <div class="card-body"><br>
                   <p>Choose your avatar </p>
                   <div class="container d-flex justify-content-center">
                     <button  type="submit" name="boy" class="button btn-bubble1">Next</button>
                   </div>
                 </div>
+                </div>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-lg-6">
+            <div class="card">
               <div class="character"><br>
-                <img src="../img/AGirl.png">
+                <img src="../img/AGirl.png"class="card-img-top" alt="...">
                 <div class="card-body"><br>
                   <p>Choose your avatar</p>
                   <div class="container d-flex justify-content-center">
                   <button type="submit" name="girl"  class="button btn-bubble1">Next</button>
                   </div>
+                </div>
                 </div>
               </div>
             </div>

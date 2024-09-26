@@ -25,11 +25,17 @@ img{
 }
 .character{
     text-align: center;
-    background-image: url('../img/PlainBoard.png');
-    background-size: 100% 100%;
+    background-image: url('../img/clear.png');
+    background-size: 80% 100%;
     background-repeat: no-repeat;
+    background-position: center;
     height: 90vh;
-    width: 40vw;
+    width: 100%;
+}
+.card{
+    margin: 30px;
+    background: transparent;
+    border: none;
 }
 .card-body{
     padding: 0 10vw;
@@ -62,4 +68,4 @@ img{
         margin-top: 20px;
     }
     }
-
+    

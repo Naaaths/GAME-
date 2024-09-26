@@ -1,12 +1,15 @@
 <?php
-    include 'codeconn.php';
+    session_start();
+    include 'conn.php';
+    $id = $_GET['id'];
+    $_SESSION['id'] = $id;
     $alert="";
     if(isset($_POST['submit'])){
       $player=$_POST['player'];
       $code=$_GET['code'];
       $_SESSION['code']=$code;
 
-      $resu=mysqli_query($con1,"SELECT * FROM scores WHERE NAMES='$player'");
+      $resu=mysqli_query($conn,"SELECT * FROM quiz_attemp WHERE userid='$player' and quiz_id='$id' ");
       if($player == NULL){
         $alert = 'Enter your name';
       } elseif(mysqli_num_rows($resu)>0){
@@ -30,7 +33,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../asset/bootstrap-5.0.1-dist/css/bootstrap.min.css">
     <!---CREATE CSS-->
-    <link rel="stylesheet" href="../css/Start.css">
+    <link rel="stylesheet" href="../css/Start.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../includes/common.css">
   </head>
   <body>

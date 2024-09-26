@@ -3,36 +3,31 @@
             
       include 'conn.php';
       include 'random.php';
-      $db = mysqli_connect('localhost','root','','question');
-
-      $user = $_SESSION['username'];
-      
+      $user =$_SESSION['username'];
+      $id = $_SESSION['userid'];
+      $eee ="";
 
       if(isset($_POST['done'])){
       $mamama = $_POST['dcode'];
       $cooode = $_POST['ccode'];
-      
-      if($conn->select_db($mamama)=== false){
-      echo '<script type="text/javascript">'.'alert("Please enter a valid code.");</script>';
-       
-      }else{
-       // echo '<script type="text/javascript">'.'console.log("Database exist");</script>';
-        // Create database
-        $sql = "CREATE DATABASE $cooode"; 
-        if ($conn->query($sql) === TRUE) {
-          echo '<script type="text/javascript">' .
-          'console.log("Database created successfully");</script>';
-        } else {
-          echo '<script type="text/javascript">' .
-          'console.log(""Error creating database: "");</script>'. $conn->error;
-          
+      $dup = mysqli_query($conn, "SELECT * from quiz WHERE gamecode = '$mamama'");
+      if(mysqli_num_rows($dup)>0){
+        $_SESSION['cccode']=$cooode;
+        $_SESSION['duplicate'] = $mamama;
+        $look =mysqli_query ($conn,"SELECT * FROM quiz WHERE gamecode='$mamama'");
+        while($row1=mysqli_fetch_assoc($look)){
+          $newname = $row1['gamename'].' copy';
+          $subk = $row1['gamesubject'];
+          $sql = mysqli_query($conn,"INSERT into quiz(userid, gamename, gamecode, gamesubject)
+          VALUES ('$id','$newname','$cooode','$subk')");
         }
-       
-        $_SESSION['decode'] = $mamama;
-        $_SESSION['cccode'] = $cooode;
-        
-       echo '<script type="text/javascript">' .'window.location = "Dcode.php"' . '</script>';
+
+        echo '<script type="text/javascript">' .'window.location = "Dcode.php"' . '</script>';
+      }else{
+        $eee = "Please enter a valid code.";
       }
+    
+      
     }
 ?>
 <!doctype html>
@@ -55,21 +50,21 @@
             <!---NAVIGATION BAR START-->
           <?php 
 
-include '../includes/navbar.php'
-
-;?>
+include '../includes/navbar.php';?>
  <!----NAVIGATION BAR END-->
             <form method='POST' >
             <!----CONTENT START------->
             <div class="blocks container">
-              <img src="../img/Chart.png">
             <h1>Enter the code of the game to be duplicated: </h1>
+            
             <div class="code_edit container">
-            <br>
+            <label style="color:white"><?=$eee?></label><br>
                 <input type="text"class="code" name="dcode"></input>
-            </div> <br>
+            </div>
+             <br>
+            
             <div class="butt container">
-                  <a href="Main_menu.php" type="button" class="button">
+                  <a href="Main_menu.php?id=<?=$id?>" type="button" class="button">
                     Back
                     <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                   </a>

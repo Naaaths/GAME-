@@ -3,14 +3,18 @@
    include 'conn.php';
    if(isset($_POST['done'])){
     $code = $_POST['code'];
+    $test = mysqli_query($conn,"SELECT * from quiz WHERE gamecode ='$code'");
     
-    if($conn->select_db($code)=== false){
-    echo '<script type="text/javascript">'.'alert("Please enter a valid code.");</script>';
+    if(mysqli_num_rows($test)>0){
+      $_SESSION['code']=$code;
+      $_SESSION['link']='Code.php';
+      $row = mysqli_fetch_assoc($test);
+      $id = $row['ID'];
+      echo '<script type="text/javascript">' .'window.location = "Start.php?code='.$code.'&id='.$id.'"' . '</script>'; 
      
     }else{
-      $_SESSION['code']=$code;
-     echo '<script type="text/javascript">' .'window.location = "Start.php?code='.$code.'"' . '</script>';
-    }
+      echo '<script type="text/javascript">'.'alert("Please enter a valid code.");</script>';
+     }
   }
 ?>
 <!doctype html>
@@ -24,7 +28,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../../asset/bootstrap-5.0.1-dist/css/bootstrap.min.css">
     <!---CREATE CSS-->
-    <link rel="stylesheet" href="../css/Code.css">
+    <link rel="stylesheet" href="../css/Code.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../includes/common.css">
   </head>
   <body>

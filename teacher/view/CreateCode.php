@@ -2,6 +2,7 @@
     session_start();
     $coode = $_SESSION['CreateCode'];
     $user = $_SESSION['username'];
+    $id = $_SESSION['userid'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -30,7 +31,7 @@ include '../includes/navbar.php'
             <!----NAVIGATION BAR END-->
             <!----CONTENT START------->
             <div class="blocks container">
-              <img src="../img/Teacher and Students.png">
+            
             <h1>Copy this code</h1>
             <div class="code container">
                 <label>
@@ -40,7 +41,7 @@ include '../includes/navbar.php'
             </label>
             </div> 
             <div class="container">
-                <a href="Main_menu.php" type="button" class="button me-3 mt-5"
+                <a href="Main_menu.php?id=<?=$id?>" type="button" class="button me-3 mt-5"
                 >Done
                 <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
               </a>

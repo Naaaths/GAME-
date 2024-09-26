@@ -1,15 +1,6 @@
-# GAME
-wamp server
-used conn
-Host: "localhost";
-User: "root";
-Password: "";
-Db name: "";
+connection:
+user/view/teacher/conn.php;
+teacher/view/conn.php;
+student/view/conn.php;
 
-for teacher's view;
-Open teacher\view\Sign_in.php;
-Database will be automatically created.
-
-
-for student's view (GAME)
-Open student\view\Code.php
+import game.sql.zip into database

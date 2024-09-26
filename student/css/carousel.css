@@ -20,13 +20,34 @@ body {
 }
 .carousel-caption{
     border: 2px solid black;
-    background: rgba(194, 207, 252, 0.596);
+    background: rgba(11, 12, 22, 0.671);
+    opacity: 1;
     font-weight: 500;
     font-size: 20px;
+    text-shadow: 1px 1px black;
+}
+#mechan{
+    font-size: 13px;
+}
+p{
+    color: white;
+}
+.header{
+    font-size:70px; 
+     color: white;
+}
+.para{
+    font-size: 15px;
 }
 .button{
     margin: 2vh 0 0 0;
     line-height: 65px;
+  }
+  .carousel-indicators{
+      display: none;
+  }
+  #mechan{
+      font-size: 18px;
   }
 /*MEDIA
 *
